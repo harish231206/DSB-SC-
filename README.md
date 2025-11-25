@@ -48,14 +48,68 @@ Model Waveform
 <img width="703" height="679" alt="image" src="https://github.com/user-attachments/assets/e7c7c7f8-ccf2-41ac-b1f3-325989941a6f" />
 
 Program
+```
+clc;
+clear;
+close();
 
+// ---------- Given Parameters ----------
+Am = 9.9;       // Message amplitude (V)
+Ac = 19.8;      // Carrier amplitude (V)
+Fm = 560;       // Message frequency (Hz)
+Fc = 5600;      // Carrier frequency (Hz)
+Fs = 55000;     // Sampling frequency (Hz)
+
+// ---------- Time Vector ----------
+t = 0:1/Fs:0.005;   // 5 ms duration
+
+// ---------- 1. Message Signal ----------
+m = Am * sin(2 * %pi * Fm * t);
+
+// ---------- 2. Carrier Signal ----------
+c = Ac * sin(2 * %pi * Fc * t);
+
+// ---------- 3. DSB-SC Modulated Signal ----------
+s = m .* c;   // Suppressed carrier (product of m and c)
+
+// ---------- Plotting ----------
+subplot(3,1,1);
+plot(t, m);
+title('Message Signal');
+xlabel('Time (s)');
+ylabel('Amplitude (V)');
+xgrid();
+
+subplot(3,1,2);
+plot(t, c);
+title('Carrier Signal');
+xlabel('Time (s)');
+ylabel('Amplitude (V)');
+xgrid();
+
+subplot(3,1,3);
+plot(t, s);
+title('DSB-SC Modulated Signal');
+xlabel('Time (s)');
+ylabel('Amplitude (V)');
+xgrid();
+
+// ---------- Display Sample Values ----------
+disp("   Time(s)     Message(V)   Carrier(V)   DSB-SC(V)");
+for i = 1:10:length(t) // every 10th sample for readability
+    mprintf("%10.6f   %10.4f   %10.4f   %10.4f\n", t(i), m(i), c(i), s(i));
+end
+```
 Output Graph
+<img width="1680" height="1053" alt="Screenshot 2025-10-27 211242" src="https://github.com/user-attachments/assets/98e6a245-56f4-4785-bba5-fd91089773bd" />
 
 
 Tablular Column
+![WhatsApp Image 2025-11-25 at 23 14 50_224a70b5](https://github.com/user-attachments/assets/519a33cf-7ab3-4b1b-9bb3-67148be4ac4f)
 
 
 Result
 
-Thus the DSB-SC-AM Modulation and Demodulation is generated.
+![WhatsApp Image 2025-11-25 at 23 14 51_88d4a468](https://github.com/user-attachments/assets/888efb3e-40a9-495f-8b60-d6fb991babf8)
+
 
