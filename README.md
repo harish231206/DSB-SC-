@@ -54,10 +54,10 @@ clear;
 close();
 
 // ---------- Given Parameters ----------
-Am = 9.9;       // Message amplitude (V)
-Ac = 19.8;      // Carrier amplitude (V)
-Fm = 560;       // Message frequency (Hz)
-Fc = 5600;      // Carrier frequency (Hz)
+Am = 10.1;       // Message amplitude (V)
+Ac = 20.2;      // Carrier amplitude (V)
+Fm = 580;       // Message frequency (Hz)
+Fc = 5800;      // Carrier frequency (Hz)
 Fs = 55000;     // Sampling frequency (Hz)
 
 // ---------- Time Vector ----------
